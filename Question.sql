@@ -81,9 +81,7 @@ CREATE TABLE brand_product (
   FOREIGN KEY (brand_id) REFERENCES brand (id),
   UNIQUE (product_id)
 );
--- Ajout de la clé primaire composée
-ALTER TABLE brand_product
-ADD PRIMARY KEY (product_id, brand_id);
+
 CREATE TABLE brand_ville (
   brand_id INT,
   ville_id INT,
