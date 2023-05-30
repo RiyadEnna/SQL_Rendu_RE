@@ -75,12 +75,11 @@ CREATE TABLE brand (
   location VARCHAR(100)
 );
 CREATE TABLE brand_product (
-  product_id INT,
   brand_id INT,
-  UNIQUE (product_id),
--- Ajout des clés étrangères
-  FOREIGN KEY (product_id) REFERENCES product(id),
-  FOREIGN KEY (brand_id) REFERENCES brand(id)
+  product_id INT,
+  PRIMARY KEY (brand_id, product_id),
+  FOREIGN KEY (brand_id) REFERENCES brand (id),
+  UNIQUE (product_id)
 );
 -- Ajout de la clé primaire composée
 ALTER TABLE brand_product
