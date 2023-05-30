@@ -75,12 +75,11 @@ CREATE TABLE brand (
   location VARCHAR(100)
 );
 CREATE TABLE brand_product (
-  product_id INT,
   brand_id INT,
-  UNIQUE (product_id),
--- Ajout des clés étrangères
-  FOREIGN KEY (product_id) REFERENCES product(id),
-  FOREIGN KEY (brand_id) REFERENCES brand(id)
+  product_id INT,
+  PRIMARY KEY (brand_id, product_id),
+  FOREIGN KEY (brand_id) REFERENCES brand (id),
+  UNIQUE (product_id)
 );
 -- Ajout de la clé primaire composée
 ALTER TABLE brand_product
@@ -229,8 +228,3 @@ CREATE TABLE adresses_facturation (
  CONSTRAINT fk_ville_id FOREIGN KEY (ville_id) REFERENCES ville_france_free(ville_id)
 );
 
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
